@@ -1,7 +1,10 @@
 import ProductCategoryRow from "./ProductCategoryRow";
 import ProductRow from "./ProductRow";
+import products from "../assets/products";
+import { Fragment } from "react";
 
-export default function ProductTable() {
+export default function ProductTable({ query, inStock }) {
+  let lastCategory = null;
   return (
     <table>
       <thead>
@@ -12,29 +15,46 @@ export default function ProductTable() {
         </tr>
       </thead>
       <tbody>
-        <ProductCategoryRow category="Fruits" />
+        {products.map((product) => {
+          const { id, category, stocked, name } = product;
+          let catRow = null;
+
+          if (!name.toLowerCase().includes(query.toLowerCase())) {
+            return null;
+          }
+
+          //   if (inStock) {
+          //   if (!stocked) {
+          if (inStock && !stocked) {
+            // true && !false ==> true && true ==> true
+            // true && !true
+            return null;
+          }
+
+          if (lastCategory !== category) {
+            // Fruits !== Vegetables
+            // "Fruits" !== "Fruits"
+            // null !== "Fruits"
+            lastCategory = category;
+
+            catRow = <ProductCategoryRow category={category} />;
+          }
+          return (
+            <Fragment key={id}>
+              {catRow}
+              <ProductRow {...product} />
+            </Fragment>
+          );
+        })}
+        {/* <ProductCategoryRow category="Fruits" />
         <ProductRow fruit="Apple" />
         <ProductRow fruit="Dragonfruit" />
         <ProductRow fruit="Passionfruit" />
 
-        <tr style={{ backgroundColor: "lightgrey" }}>
-          <th colSpan={3}>Vegetables</th>
-        </tr>
-        <tr>
-          <td>Spinach</td>
-          <td>$2</td>
-          <td style={{ backgroundColor: "lightgreen" }}>Yes</td>
-        </tr>
-        <tr>
-          <td>Pumpkin</td>
-          <td>$4</td>
-          <td style={{ backgroundColor: "red" }}>No</td>
-        </tr>
-        <tr>
-          <td>Peas</td>
-          <td>$1</td>
-          <td style={{ backgroundColor: "lightgreen" }}>Yes</td>
-        </tr>
+        <ProductCategoryRow category="Vegetables" />
+        <ProductRow fruit="Spinach" />
+        <ProductRow fruit="Pumpkin" />
+        <ProductRow fruit="Peas" /> */}
       </tbody>
     </table>
   );

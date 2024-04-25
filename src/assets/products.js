@@ -15,7 +15,13 @@ const products = [
     stocked: false,
     name: "Passionfruit",
   },
-  { id: 4, ategory: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+  {
+    id: 4,
+    category: "Vegetables",
+    price: "$2",
+    stocked: true,
+    name: "Spinach",
+  },
   {
     id: 5,
     category: "Vegetables",
