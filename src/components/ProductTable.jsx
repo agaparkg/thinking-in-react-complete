@@ -46,7 +46,8 @@ export default function ProductTable({ query, inStock }) {
             </Fragment>
           );
         })}
-        {/* <ProductCategoryRow category="Fruits" />
+        {/* 
+        <ProductCategoryRow category="Fruits" />
         <ProductRow fruit="Apple" />
         <ProductRow fruit="Dragonfruit" />
         <ProductRow fruit="Passionfruit" />
@@ -54,7 +55,8 @@ export default function ProductTable({ query, inStock }) {
         <ProductCategoryRow category="Vegetables" />
         <ProductRow fruit="Spinach" />
         <ProductRow fruit="Pumpkin" />
-        <ProductRow fruit="Peas" /> */}
+        <ProductRow fruit="Peas" /> 
+        */}
       </tbody>
     </table>
   );
