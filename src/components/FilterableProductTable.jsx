@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar";
 import "../stylings/FilterableProductTable.css";
-import ProductTable from "./ProductTable";
+import ProductTable from "./ProductTable2";
 import { useState } from "react";
 
 // export default function FilterableProductTable() {
